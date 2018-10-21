@@ -67,11 +67,18 @@
         if(overlayDiv) {
           overlayDiv.parentNode.removeChild(overlayDiv);
         }
-      }, false);
+      }, false); // remove the overlayDiv if the image is clicked
 
       overlayDiv.addEventListener("click", function () {
         if(overlayDiv) {
           overlayDiv.parentNode.removeChild(overlayDiv);
+        }
+      }, false); // remove the overlayDiv if the overlayDiv is clicked
+
+      window.addEventListener("scroll", function () {
+        if (overlayDiv) {
+          overlayDiv.style.left = window.pageXOffset + "px";
+          overlayDiv.style.top = window.pageYOffset + "px";
         }
       }, false);
 
