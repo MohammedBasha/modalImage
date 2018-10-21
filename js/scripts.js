@@ -2,6 +2,17 @@
 
   // grab the images
   var myUl = document.querySelector("#artlist .pixgrid ul");
+
+  // Centring the image
+  function centerImage(theImage) {
+    var myDifX = (window.innerWidth - theImage.width) / 2;
+    var myDifY = (window.innerHeight - theImage.height) / 2;
+
+    theImage.style.left = myDifX + "px";
+    theImage.style.top = myDifY + "px";
+
+    return theImage;
+  }
   
   myUl.addEventListener("click", function (e) {
     if (e.target.tagName === "IMG") {
@@ -46,7 +57,9 @@
           this.width *= this.ratio;
         }
 
-        overlayDiv.appendChild(largeImage); // append it after changes
+        centerImage(this);
+
+        overlayDiv.appendChild(this); // append it after changes
 
       });
 
