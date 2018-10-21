@@ -63,6 +63,18 @@
 
       });
 
+      largeImage.addEventListener("click", function () {
+        if(overlayDiv) {
+          overlayDiv.parentNode.removeChild(overlayDiv);
+        }
+      }, false);
+
+      overlayDiv.addEventListener("click", function () {
+        if(overlayDiv) {
+          overlayDiv.parentNode.removeChild(overlayDiv);
+        }
+      }, false);
+
 
     } // targeting the images only
   }, false); // fires when any image is clicked
