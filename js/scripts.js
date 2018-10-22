@@ -65,12 +65,16 @@
 
       largeImage.addEventListener("click", function () {
         if(overlayDiv) {
+          window.removeEventListener("resize", window, false);
+          window.removeEventListener("scroll", window, false);
           overlayDiv.parentNode.removeChild(overlayDiv);
         }
       }, false); // remove the overlayDiv if the image is clicked
 
       overlayDiv.addEventListener("click", function () {
         if(overlayDiv) {
+          window.removeEventListener("resize", window, false);
+          window.removeEventListener("scroll", window, false);
           overlayDiv.parentNode.removeChild(overlayDiv);
         }
       }, false); // remove the overlayDiv if the overlayDiv is clicked
@@ -80,7 +84,18 @@
           overlayDiv.style.left = window.pageXOffset + "px";
           overlayDiv.style.top = window.pageYOffset + "px";
         }
-      }, false);
+      }, false); // Handle the Scroll event
+
+      window.addEventListener("resize", function () {
+        if (overlayDiv) {
+          overlayDiv.style.width = window.innerWidth + "px";
+          overlayDiv.style.height = window.innerHeight + "px";
+          overlayDiv.style.left = window.pageXOffset + "px";
+          overlayDiv.style.top = window.pageYOffset + "px";
+
+          centerImage(largeImage);
+        }
+      }, false); // Handle the resize Event
 
 
     } // targeting the images only
